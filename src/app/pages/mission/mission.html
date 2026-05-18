@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white text-center">
+      <h5 class="mb-0">Sauvegarde des Missions</h5>
+    </div>
+
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+        <div class="row">
+
+
+         <!-- Date debut -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Date debut misssion</label>
+            <input type="date" class="form-control"
+              [(ngModel)]="formData.date_deb_miss"
+              name="date_deb_miss"
+              required>
+          </div>
+
+          <!-- Date fin -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Date fin misssion</label>
+            <input type="date" class="form-control"
+              [(ngModel)]="formData.date_fin_miss"
+              name="date_fin_miss"
+              required>
+          </div>
+
+          <!-- Equipement -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Mission</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.Motif"
+              name="Motif"
+              required>
+          </div>
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Destination</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.destina"
+              name="destina"
+              required>
+          </div>
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Observation</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.observa"
+              name="observa">
+          </div>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <button type="reset" class="btn btn-outline-secondary" (click)="onReset(form)">
+            Annuler
+          </button>
+
+          <button type="submit" class="btn btn-success" >
+            Enregistrer
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

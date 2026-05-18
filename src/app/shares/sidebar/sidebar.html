@@ -1,0 +1,113 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+
+    <!-- Sidebar -->
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2  ">
+      <div class="d-flex flex-column px-3 pt-2 text-white min-vh-100">
+
+        <!-- Logo -->
+        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 text-white text-decoration-none">
+          <span class="fs-5 fw-bold"> </span>
+        </a>
+
+        <!-- Menu -->
+        <ul class="nav nav-pills flex-column mb-auto" id="menu">
+
+          <li class="nav-item">
+            <a routerLink="/dashbo" class="nav-link text-white">
+              <i class="fs-5 bi bi-house"></i>
+              <span class="ms-2">Accueil</span>
+            </a>
+          </li>
+
+          <!-- Dashboard -->
+          <li>
+            <a routerLink="/entree"  data-bs-toggle="collapse" class="nav-link text-white ">
+              <i class="fs-5 bi bi-speedometer2"></i>
+              <span class="ms-2">Entrées</span>
+            </a>
+          </li>
+
+          <!-- Orders -->
+          <li>
+            <a routerLink="/sortie"  class="nav-link text-white">
+              <i class="fs-5 bi bi-table"></i>
+              <span class="ms-2">Sortie</span>
+            </a>
+          </li>
+
+          <!-- Bootstrap -->
+           <li>
+            <a routerLink="/missi"  class="nav-link text-white">
+              <i class="bi bi-briefcase-fill"></i>
+              <span class="ms-2">Mission</span>
+            </a>
+          </li>
+
+          <!-- Products -->
+          <li>
+            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link text-white">
+              <i class="bi bi-gear"></i>
+              <span class="ms-2">Reglages</span>
+            </a>
+            <ul class="collapse nav flex-column ms-3" id="submenu3" data-bs-parent="#menu">
+              <li><a routerLink="/site" class="nav-link text-white">Site</a></li>
+              <li><a routerLink="/eqpt" class="nav-link text-white">Equipement</a></li>
+            </ul>
+          </li>
+
+          <!-- Customers -->
+          <!-- <li>
+            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link text-white">
+              <i class="fs-5 bi bi-grid"></i>
+              <span class="ms-2">Tâche</span>
+            </a>
+            <ul class="collapse nav flex-column ms-3" id="submenu3" data-bs-parent="#menu">
+              <li><a href="#" class="nav-link text-white">Corrective</a></li>
+              <li><a href="#" class="nav-link text-white">Péventive</a></li>
+              <li><a href="#" class="nav-link text-white">Assistance</a></li>
+            </ul>
+          </li> -->
+
+        </ul>
+
+        <hr class="text-secondary">
+
+        <!-- Dropdown utilisateur -->
+        <div class="dropdown pb-4">
+
+          <a href="#"
+             class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+             id="dropdownUser1"
+             data-bs-toggle="dropdown"
+             data-bs-auto-close="true"
+             aria-expanded="false">
+
+            <img src="https://github.com/mdo.png"
+                 width="32"
+                 height="32"
+                 class="rounded-circle">
+
+            <span class="ms-2">User</span>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-dark shadow"
+              aria-labelledby="dropdownUser1">
+
+            <li><a class="dropdown-item" href="#">New project</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+
+    
+  </div>
+</div>

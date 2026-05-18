@@ -1,0 +1,154 @@
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white text-center">
+      <h5 class="mb-0">Gestion des Sorties de Matériels</h5>
+    </div>
+    <br>
+    <!-- barre de recherche -->
+    <app-search></app-search>
+
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+        <div class="row">
+
+          <!-- equipement -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Equipement</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.eqpt"
+              name="eqpt"
+              required>
+          </div>  
+
+          <!-- model -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Model</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.model"
+              name="model"
+              required>
+          </div>  
+
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Code site</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.codeSite"
+              name="codeSite"
+              required placeholder="EX: SCI00000">
+          </div>
+
+          <!-- Numéro de série -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Numéro de série</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.numeroSerie"
+              name="numeroSerie "
+              required placeholder="SN:xxxxxxxxx">
+          </div>
+
+
+            <!-- Date début -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Date fin de traitement</label>
+            <input type="date" class="form-control"
+              [(ngModel)]="formData.dateDebut"
+              name="dateDebut">
+          </div>
+
+
+          <!-- Date de sortie -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Date de sortie</label>
+            <input type="date" class="form-control"
+              [(ngModel)]="formData.dateEntree"
+              name="dateEntree"
+              required>
+          </div>
+
+          <!-- Origine -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Destination</label>
+            <select class="form-select"
+              [(ngModel)]="formData.origine"
+              name="origine"
+              required>
+              <option value="">-- Choisir --</option>
+              <option value="client">Client</option>
+              <option value="interne">Interne</option>
+              <option value="fournisseur">Fournisseur</option>
+            </select>
+          </div>
+
+          <!-- Equipement -->
+         <!--  <div class="col-md-4 mb-3">
+            <label class="form-label">Equipement</label>
+            <select class="form-select"
+              [(ngModel)]="formData.origine"
+              name="origine"
+              required>
+              <option value="">-- Choisir --</option>
+              <option value="client">Client</option>
+              <option value="interne">Interne</option>
+              <option value="fournisseur">Fournisseur</option>
+            </select>
+          </div> -->
+
+          
+
+          
+
+          <!-- Remarques -->
+          <div class="col-md-12 mb-3">
+            <label class="form-label">Observation</label>
+            <textarea class="form-control"
+              rows="3"
+              [(ngModel)]="formData.traitement"
+              name="traitement"></textarea>
+          </div>
+
+               <!-- Fichier à uploader -->
+          <div class="col-md-12 mb-3">
+            <label class="form-label">Téléverser fiche de sortie</label>
+            <input type="file" class="form-control"
+                   >
+          </div>
+
+          <!-- Statut -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Statut</label>
+            <select class="form-select"
+              [(ngModel)]="formData.statut"
+              name="statut"
+              required>
+              <option value="">-- Choisir --</option>
+              <option value="encours">En cours</option>
+              <option value="resolu">Résolu</option>
+              <option value="rebut">Rebut</option>
+            </select>
+          </div>
+
+         
+
+        </div>
+
+        
+      
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <button type="reset" class="btn btn-outline-secondary" (click)="onReset(form)">
+            Annuler
+          </button>
+
+          <button type="submit" class="btn btn-success" >
+            Enregistrer
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white text-center">
+      <h5 class="mb-0">Création des sites</h5>
+    </div>
+
+    <div class="card-body">
+
+      
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+ 
+
+        <div class="row">
+
+          <!-- Equipement -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Site</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.site"
+              name="site"
+              required>
+          </div>
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">adresse</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.adresse"
+              name="adresse"
+              required>
+          </div>
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Contact</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.contact"
+              name="contact">
+          </div>
+
+          <!-- Numéro de série -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Chef d'agence</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.chef_agce"
+              name="chef_agce">
+          </div>
+
+          
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <button type="reset" class="btn btn-outline-secondary" (click)="onReset(form)">
+            Annuler
+          </button>
+
+          <button type="submit" class="btn btn-success" >
+            Enregistrer
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

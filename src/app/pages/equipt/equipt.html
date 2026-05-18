@@ -1,0 +1,81 @@
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white text-center">
+      <h5 class="mb-0">Création des équipements</h5>
+    </div>
+
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+        <div class="row">
+
+          <!-- Equipement -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Equipement</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.nom_eqpt"
+              name="nom_eqpt"
+              required>
+          </div>
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Modèle</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.model_eqpt"
+              name="model_eqpt"
+              required>
+          </div>
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Code site</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.code_sit"
+              name="code_sit"
+              required placeholder="EX: SCI00000">
+          </div>
+
+          <!-- Numéro de série -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Numéro de série</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.num_seri"
+              name="num_seri "
+              required placeholder="SN:xxxxxxxxx">
+          </div>
+
+        </div>
+
+        <!-- Site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Site</label>
+            <select class="form-select"
+                    [(ngModel)]="formData.id_site"
+                    name="siite" 
+                    required>
+              <option [ngValue]="null">-- Choisir un site --</option>
+              
+              <option *ngFor="let sitt of sit" [ngValue]="sitt.id">
+                {{ sitt.nom_site }}
+              </option>
+            </select>
+          </div>
+
+        
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <button type="reset" class="btn btn-outline-secondary" (click)="onReset(form)">
+            Annuler
+          </button>
+
+          <button type="submit" class="btn btn-success" >
+            Enregistrer
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
