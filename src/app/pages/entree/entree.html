@@ -14,13 +14,11 @@
           <div class="col-md-4 mb-3">
             <label class="form-label">Equipement</label>
             <select class="form-select"
-              [(ngModel)]="formData.origine"
-              name="origine"
+              [(ngModel)]="formData.id_eqpt"
+              name="eqpt"
               required>
-              <option value="">-- Choisir --</option>
-              <option value="client">Client</option>
-              <option value="interne">Interne</option>
-              <option value="fournisseur">Fournisseur</option>
+              <option [ngValue]="null">-- Choisir --</option>
+              <option *ngFor="let eqp of eq" [ngValue]="eqp.id">{{eqp.nom_eqpt}}</option>
             </select>
           </div>
 

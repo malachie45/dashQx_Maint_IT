@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ServiceEntree } from '../../service/service-entree';
 
@@ -8,13 +9,14 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-entree',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './entree.html',
   styleUrl: './entree.css',
 })
-export class Entree {
+export class Entree implements OnInit {
 
   eqpt:any
+  eq:any[]=[];
 
    message = '';
 showMessage = false;
@@ -22,6 +24,7 @@ showMessage = false;
   formData = {
     dateEntree: '',
     origine: '',
+    id_eqpt: null,
     codeSite: '',
     numeroSerie: '',
     motif: '',
@@ -35,6 +38,10 @@ showMessage = false;
 
   // injection du service 
   constructor(private entreeservice:ServiceEntree){}
+  
+  ngOnInit(){
+    this.combogeteqpt();
+  }
 
   // cliquer sur enregistrer
   onSubmit() {
@@ -52,6 +59,7 @@ showMessage = false;
               this.formData = {
                 dateEntree: '',
                 origine: '',
+                id_eqpt: null,
                 codeSite: '',
                 numeroSerie: '',
                 motif: '',
@@ -73,6 +81,13 @@ showMessage = false;
         this.entreeservice.getEntree().subscribe(res =>{
         this.eqpt = res;
       });
+    }
+
+    //récupération des equipements
+    combogeteqpt(){
+      this.entreeservice.getEqptCombo().subscribe(res =>{
+        this.eq = res
+      })
     }
 
     //insertion des données
