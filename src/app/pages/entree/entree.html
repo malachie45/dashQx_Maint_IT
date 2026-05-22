@@ -44,13 +44,11 @@
           <div class="col-md-4 mb-3">
             <label class="form-label">Origine</label>
             <select class="form-select"
-              [(ngModel)]="formData.origine"
+              [(ngModel)]="formData.id_sit"
               name="origine"
               required>
-              <option value="">-- Choisir --</option>
-              <option value="client">Client</option>
-              <option value="interne">Interne</option>
-              <option value="fournisseur">Fournisseur</option>
+              <option [ngValue]="null">-- Choisir --</option>
+              <option *ngFor="let sitt of sit" [ngValue]="sitt.id">{{ sitt.nom_site }}</option>
             </select>
           </div>
 

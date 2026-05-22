@@ -23,6 +23,11 @@ constructor(private httpclient:HttpClient){}
     return this.httpclient.get('http://127.0.0.1:8000/api/comboeqpt');
   }
 
+  // récupérer la liste des sites
+    getSiteComboFentree(): Observable<any> {
+      return this.httpclient.get('http://127.0.0.1:8000/api/combsiteentre');
+    }
+
   // ajouter un équipement
   insertEntree(data: any): Observable<any> {
     return this.httpclient.post('http://127.0.0.1:8000/api/recup', data);

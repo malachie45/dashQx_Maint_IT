@@ -17,13 +17,14 @@ export class Entree implements OnInit {
 
   eqpt:any
   eq:any[]=[];
+  sit:any[]=[];
 
    message = '';
 showMessage = false;
 
   formData = {
     dateEntree: '',
-    origine: '',
+    id_sit: null,
     id_eqpt: null,
     codeSite: '',
     numeroSerie: '',
@@ -41,6 +42,7 @@ showMessage = false;
   
   ngOnInit(){
     this.combogeteqpt();
+    this.combogetsitFentrees();
   }
 
   // cliquer sur enregistrer
@@ -58,7 +60,7 @@ showMessage = false;
         // 2. Réinitialiser le formulaire
               this.formData = {
                 dateEntree: '',
-                origine: '',
+                id_sit: null,
                 id_eqpt: null,
                 codeSite: '',
                 numeroSerie: '',
@@ -81,6 +83,13 @@ showMessage = false;
         this.entreeservice.getEntree().subscribe(res =>{
         this.eqpt = res;
       });
+    }
+
+    //récupération des sites dans combo site duForm des entrées
+    combogetsitFentrees(){
+      this.entreeservice.getSiteComboFentree().subscribe(res =>{
+        this.sit = res;
+      })
     }
 
     //récupération des equipements
