@@ -19,7 +19,7 @@ constructor(private httpclient:HttpClient){}
   }
 
   // ajouter un équipement
-  insertechnicien(data: any): Observable<any> {
+  insertechnicien(data: any) {
     return this.httpclient.post('http://127.0.0.1:8000/api/intech', data);
   }
 

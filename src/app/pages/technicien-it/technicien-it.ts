@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Technicien } from '../../service/technicien';
 
 @Component({
   selector: 'app-technicien-it',
@@ -15,6 +16,8 @@ ngOnInit() {
   
 }
 
+tec:any[]=[];
+
 formData = {
   mat_it: '',
   nom_tech: '',
@@ -23,10 +26,12 @@ formData = {
   adr_it: '',
 };
 
-
+  // injection du service 
+  constructor(private techservice:Technicien){}
 
 onSubmit() {
 
+  this.insertecho();
   // Succes apres enregistrement
 
    Swal.fire({
@@ -49,9 +54,15 @@ onSubmit() {
 
 }
 
-onReset(_t25: any) {
-throw new Error('Method not implemented.');
+insertecho(){
+  this.techservice.insertechnicien(this.formData).subscribe(res =>{
+        console.log(this.formData);  
+      })
 }
+
+ onReset(form: NgForm) {
+    form.resetForm();
+  }
 
 
 
