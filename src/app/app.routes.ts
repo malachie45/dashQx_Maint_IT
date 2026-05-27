@@ -47,7 +47,13 @@ export const routes: Routes = [
         path: 'missi',
         loadComponent: () =>
           import('./pages/mission/mission').then(m => m.Mission)
-      }
+      },
+
+      {
+        path: 'tech',
+        loadComponent: () =>
+         import('./pages/technicien-it/technicien-it').then(m => m.TechnicienIT)
+      },
 
     ]
   }

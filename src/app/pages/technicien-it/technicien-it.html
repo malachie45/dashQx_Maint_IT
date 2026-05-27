@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white text-center">
+      <h5 class="mb-0">Technicien IT</h5>
+    </div>
+
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+        <div class="row">
+
+
+         <!-- Date debut -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Matricule</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.mat_it"
+              name="mat_it"
+              required>
+          </div>
+
+          <!-- Date fin -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Nom Technicien</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.nom_tech"
+              name="nom_tech"
+              required>
+          </div>
+
+          <!-- Equipement -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Prenom</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.Pren_tech"
+              name="Pren_tech"
+              required>
+          </div>
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Contact</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.cont_it"
+              name="coont_it"
+              required>
+          </div>
+
+          <!-- Code site -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Adresse IT</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.adr_it"
+              name="adr_it">
+          </div>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <button type="reset" class="btn btn-outline-secondary" (click)="onReset(form)">
+            Annuler
+          </button>
+
+          <button type="submit" class="btn btn-success" >
+            Enregistrer
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
