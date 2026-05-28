@@ -18,8 +18,8 @@ constructor(private httpclient:HttpClient){}
     return this.httpclient.get('http://127.0.0.1:8000/api/recup');
   }
 
-  // ajouter un équipement
-  insertechnicien(data: any) {
+  // ajouter un technicien
+  insertechnicien(data: any): Observable<any> {
     return this.httpclient.post('http://127.0.0.1:8000/api/intech', data);
   }
 

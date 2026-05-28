@@ -26,6 +26,7 @@ showMessage = false;
     dateEntree: '',
     id_sit: null,
     id_eqpt: null,
+    model: '',
     codeSite: '',
     numeroSerie: '',
     motif: '',
@@ -62,6 +63,7 @@ showMessage = false;
                 dateEntree: '',
                 id_sit: null,
                 id_eqpt: null,
+                model: '',
                 codeSite: '',
                 numeroSerie: '',
                 motif: '',
@@ -107,3 +109,9 @@ showMessage = false;
     }
 
 }
+
+// insertecho(){
+//   this.techservice.insertechnicien(this.formData).subscribe(res =>{
+//         console.log(this.formData);  
+//       })
+// }
