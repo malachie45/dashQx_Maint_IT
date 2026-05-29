@@ -1,145 +1,243 @@
 <div class="container mt-4">
+
   <div class="card shadow-sm">
+
     <div class="card-header bg-success text-white text-center">
       <h5 class="mb-0">Gestion des Entrées de Matériels</h5>
     </div>
 
     <div class="card-body">
+
       <form (ngSubmit)="onSubmit()" #form="ngForm">
 
         <div class="row">
 
-
           <!-- Equipement -->
           <div class="col-md-4 mb-3">
+
             <label class="form-label">Equipement</label>
-            <select class="form-select"
+
+            <select
+              class="form-select"
               [(ngModel)]="formData.id_eqpt"
-              name="eqpt"
+              name="id_eqpt"
               required>
+
               <option [ngValue]="null">-- Choisir --</option>
-              <option *ngFor="let eqp of eq" [ngValue]="eqp.id">{{eqp.nom_eqpt}}</option>
+
+              <option
+                *ngFor="let eqp of eq"
+                [ngValue]="eqp.id">
+
+                {{ eqp.nom_eqpt }}
+
+              </option>
+
             </select>
+
           </div>
 
-          <!-- Code site -->
+
+          <!-- Modèle -->
           <div class="col-md-4 mb-3">
+
             <label class="form-label">Modèle</label>
-            <input type="text" class="form-control"
-              [(ngModel)]="formData.codeSite"
-              name="codeSite"
+
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="formData.modele"
+              name="modele"
               required>
+
           </div>
 
-          <!-- Date d'entrée -->
+
+          <!-- Date entrée -->
           <div class="col-md-4 mb-3">
+
             <label class="form-label">Date d'entrée</label>
-            <input type="date" class="form-control"
+
+            <input
+              type="date"
+              class="form-control"
               [(ngModel)]="formData.dateEntree"
               name="dateEntree"
               required>
+
           </div>
+
 
           <!-- Origine -->
           <div class="col-md-4 mb-3">
+
             <label class="form-label">Origine</label>
-            <select class="form-select"
+
+            <select
+              class="form-select"
               [(ngModel)]="formData.id_sit"
-              name="origine"
+              name="id_sit"
               required>
+
               <option [ngValue]="null">-- Choisir --</option>
-              <option *ngFor="let sitt of sit" [ngValue]="sitt.id">{{ sitt.nom_site }}</option>
+
+              <option
+                *ngFor="let sitt of sit"
+                [ngValue]="sitt.id">
+
+                {{ sitt.nom_site }}
+
+              </option>
+
             </select>
+
           </div>
 
-          
 
           <!-- Code site -->
           <div class="col-md-4 mb-3">
+
             <label class="form-label">Code site</label>
-            <input type="text" class="form-control"
+
+            <input
+              type="text"
+              class="form-control"
               [(ngModel)]="formData.codeSite"
               name="codeSite"
-              required placeholder="EX: SCI00000">
+              required
+              placeholder="EX: SCI00000">
+
           </div>
 
-          <!-- Numéro de série -->
+
+          <!-- Numéro série -->
           <div class="col-md-6 mb-3">
+
             <label class="form-label">Numéro de série</label>
-            <input type="text" class="form-control"
+
+            <input
+              type="text"
+              class="form-control"
               [(ngModel)]="formData.numeroSerie"
-              name="numeroSerie "
-              required placeholder="SN:xxxxxxxxx">
+              name="numeroSerie"
+              required
+              placeholder="SN:xxxxxxxxx">
+
           </div>
+
 
           <!-- Motif -->
           <div class="col-md-6 mb-3">
+
             <label class="form-label">Motif d'entrée</label>
-            <input type="text" class="form-control"
+
+            <input
+              type="text"
+              class="form-control"
               [(ngModel)]="formData.motif"
               name="motif"
               required>
+
           </div>
 
-          <!-- Traitement -->
+
+          <!-- Upload fichier -->
           <div class="col-md-12 mb-3">
-            <label class="form-label">Traitement</label>
-            <textarea class="form-control"
-              rows="3"
-              [(ngModel)]="formData.traitement"
-              name="traitement"></textarea>
+
+            <label class="form-label">
+
+              Téléverser fiche d'entrée
+
+            </label>
+
+            <input
+              type="file"
+              class="form-control"
+              name="fichier"
+              accept=".jpg,.jpeg,.png,.gif"
+              (change)="onFileSelected($event)"
+              required>
+
           </div>
 
-          
-           <!-- Fichier à uploader -->
-          <div class="col-md-12 mb-3">
-            <label class="form-label">Téléverser fiche d'entrée</label>
-            <input type="file" class="form-control" name="fichier"
-                   >
-          </div>
 
-
-               <!-- Date début -->
+          <!-- Date début -->
           <div class="col-md-4 mb-3">
-            <label class="form-label">Date début traitement</label>
-            <input type="date" class="form-control"
+
+            <label class="form-label">
+
+              Date début traitement
+
+            </label>
+
+            <input
+              type="date"
+              class="form-control"
               [(ngModel)]="formData.dateDebut"
-              name="dateDebut">
+              name="dateDebut"
+              required>
+
           </div>
 
 
           <!-- Statut -->
           <div class="col-md-4 mb-3">
+
             <label class="form-label">Statut</label>
-            <select class="form-select"
+
+            <select
+              class="form-select"
               [(ngModel)]="formData.statut"
               name="statut"
               required>
-              <option value="">-- Choisir --</option>
-              <option value="encours">En cours</option>
-              <option value="resolu">Résolu</option>
-              <option value="rebut">Rebut</option>
-            </select>
-          </div>
 
-         
+              <option value="">-- Choisir --</option>
+
+              <option value="encours">
+                En cours
+              </option>
+
+              <option value="resolu">
+                Résolu
+              </option>
+
+              <option value="rebut">
+                Rebut
+              </option>
+
+            </select>
+
+          </div>
 
         </div>
 
-        
 
-        <!-- Buttons -->
+        <!-- boutons -->
         <div class="d-flex justify-content-end gap-2 mt-3">
-          <button type="reset" class="btn btn-outline-secondary" (click)="onReset(form)">
+
+          <button
+            type="reset"
+            class="btn btn-outline-secondary"
+            (click)="onReset(form)">
+
             Annuler
+
           </button>
 
-          <button type="submit" class="btn btn-success" >
+          <button
+            type="submit"
+            class="btn btn-success">
+
             Enregistrer
+
           </button>
+
         </div>
 
       </form>
+
     </div>
+
   </div>
+
 </div>
