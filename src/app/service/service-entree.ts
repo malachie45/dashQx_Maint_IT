@@ -30,7 +30,7 @@ constructor(private httpclient:HttpClient){}
 
   // ajouter un équipement
   insertEntree(data: any): Observable<any> {
-    return this.httpclient.post('http://127.0.0.1:8000/api/recup', data);
+    return this.httpclient.post('http://127.0.0.1:8000/api/inentrees', data);
   }
 
   // modifier un équipement

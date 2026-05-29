@@ -30,7 +30,6 @@ showMessage = false;
     codeSite: '',
     numeroSerie: '',
     motif: '',
-    traitement: '',
     dateDebut: '',
     dateFin: '',
     statut: '',
@@ -48,6 +47,8 @@ showMessage = false;
 
   // cliquer sur enregistrer
   onSubmit() {
+
+    this.insertentreedata();
     // ✅ message succès
      
           Swal.fire({
@@ -67,7 +68,7 @@ showMessage = false;
                 codeSite: '',
                 numeroSerie: '',
                 motif: '',
-                traitement: '',
+               
                 dateDebut: '',
                 dateFin: '',
                 statut: '',
