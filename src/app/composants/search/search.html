@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form class="d-flex">
+            <form (ngSubmit)="onSubmit()" #form="ngForm">
                 <div class="input-group">
-                    <input class="form-control form-control-lg" type="search" placeholder="rechercher (sn ou sci)" aria-label="Search">
+                    <input [(ngModel)]="formData.recherch"  class="form-control form-control-lg" type="search" placeholder="rechercher (sn ou sci)" aria-label="Search" name="recherch">
                     <button class="btn btn-success px-4" type="submit">
                             <i class="bi bi-search"></i>
                         </button>

@@ -42,8 +42,10 @@ export class Entree implements OnInit {
   constructor(private entreeservice: ServiceEntree) {}
 
   ngOnInit() {
+
     this.combogeteqpt();
     this.combogetsitFentrees();
+
   }
 
   // récupération du fichier
@@ -54,6 +56,7 @@ export class Entree implements OnInit {
       this.selectedFile = event.target.files[0];
 
     }
+
   }
 
   // cliquer sur enregistrer
@@ -64,7 +67,9 @@ export class Entree implements OnInit {
   }
 
   onReset(form: NgForm) {
+
     form.resetForm();
+
   }
 
   // récupération des entrées
@@ -109,7 +114,7 @@ export class Entree implements OnInit {
     data.append('fichier', this.selectedFile);
 
     // correspond à "model" attendu par Laravel
-    data.append('modele', this.formData.modele);
+    data.append('model', this.formData.modele);
 
     data.append('dateEntree', this.formData.dateEntree);
     data.append('dateDebut', this.formData.dateDebut);

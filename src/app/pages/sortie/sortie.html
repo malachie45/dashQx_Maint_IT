@@ -4,8 +4,10 @@
       <h5 class="mb-0">Gestion des Sorties de Matériels</h5>
     </div>
     <br>
-    <!-- barre de recherche -->
-    <app-search></app-search>
+    <!-- barre de recherche incluant la préparation à recevoir une data provenant d'un autre composant-->
+    <app-search
+  (resultatRecherche)="recupererDonnees($event)">
+    </app-search>
 
     <div class="card-body">
       <form (ngSubmit)="onSubmit()" #form="ngForm">
@@ -18,7 +20,7 @@
             <input type="text" class="form-control"
               [(ngModel)]="formData.eqpt"
               name="eqpt"
-              required>
+              required readonly>
           </div>  
 
           <!-- model -->
@@ -27,7 +29,7 @@
             <input type="text" class="form-control"
               [(ngModel)]="formData.model"
               name="model"
-              required>
+              required readonly>
           </div>  
 
 
@@ -37,7 +39,7 @@
             <input type="text" class="form-control"
               [(ngModel)]="formData.codeSite"
               name="codeSite"
-              required placeholder="EX: SCI00000">
+              required placeholder="EX: SCI00000" readonly>
           </div>
 
           <!-- Numéro de série -->
@@ -46,7 +48,7 @@
             <input type="text" class="form-control"
               [(ngModel)]="formData.numeroSerie"
               name="numeroSerie "
-              required placeholder="SN:xxxxxxxxx">
+              required placeholder="SN:xxxxxxxxx" readonly>
           </div>
 
 
@@ -55,7 +57,7 @@
             <label class="form-label">Date fin de traitement</label>
             <input type="date" class="form-control"
               [(ngModel)]="formData.dateDebut"
-              name="dateDebut">
+              name="dateDebut" readonly>
           </div>
 
 
@@ -65,7 +67,7 @@
             <input type="date" class="form-control"
               [(ngModel)]="formData.dateEntree"
               name="dateEntree"
-              required>
+              required readonly>
           </div>
 
           <!-- Origine -->
@@ -74,7 +76,7 @@
             <select class="form-select"
               [(ngModel)]="formData.origine"
               name="origine"
-              required>
+              required readonly>
               <option value="">-- Choisir --</option>
               <option value="client">Client</option>
               <option value="interne">Interne</option>

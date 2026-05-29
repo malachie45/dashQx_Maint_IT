@@ -12,10 +12,6 @@ import { Technicien } from '../../service/technicien';
 })
 export class TechnicienIT implements OnInit {
 
-ngOnInit() {
-  
-}
-
 tec:any[]=[];
 
 formData = {
@@ -28,6 +24,8 @@ formData = {
 
   // injection du service 
   constructor(private techservice:Technicien){}
+
+ngOnInit() {}
 
 onSubmit() {
 
