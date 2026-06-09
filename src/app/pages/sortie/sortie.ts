@@ -63,6 +63,7 @@ sorti:any
 
   }
 
+      // remplissage automatique des champs
   recupererDonnees(data: any) {
     this.donneesRecherche = data;
     console.log(data);
