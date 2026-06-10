@@ -52,37 +52,42 @@
           </div>
 
 
-            <!-- Date début -->
+          <!-- motif d'entrée -->
           <div class="col-md-4 mb-3">
+            <label class="form-label">motif d'entrée</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.motifentre"
+              name="motifentre"
+              required  readonly>
+          </div>
+
+          <!-- Date début -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Date d'entrée</label>
+            <input type="date" class="form-control"
+              [(ngModel)]="formData.dateEntree"
+              name="dateDebut" readonly>
+          </div> 
+
+            <!-- Date début -->
+        <!--   <div class="col-md-4 mb-3">
             <label class="form-label">Date fin de traitement</label>
             <input type="date" class="form-control"
               [(ngModel)]="formData.dateDebut"
               name="dateDebut" readonly>
-          </div>
+          </div> -->
 
 
-          <!-- Date de sortie -->
+        
+
+          <!-- site -->
           <div class="col-md-4 mb-3">
-            <label class="form-label">Date de sortie</label>
-            <input type="date" class="form-control"
-              [(ngModel)]="formData.dateEntree"
-              name="dateEntree"
-              required readonly>
-          </div>
-
-          <!-- Origine -->
-          <div class="col-md-4 mb-3">
-            <label class="form-label">Destination</label>
-            <select class="form-select"
+            <label class="form-label">Site</label>
+            <input type="text" class="form-control"
               [(ngModel)]="formData.origine"
               name="origine"
               required readonly>
-              <option value="">-- Choisir --</option>
-              <option value="client">Client</option>
-              <option value="interne">Interne</option>
-              <option value="fournisseur">Fournisseur</option>
-            </select>
-          </div>
+          </div> 
 
           <!-- Equipement -->
          <!--  <div class="col-md-4 mb-3">
@@ -111,6 +116,15 @@
               name="traitement"></textarea>
           </div>
 
+            <!-- Date de sortie -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Date de sortie</label>
+            <input type="date" class="form-control"
+              [(ngModel)]="formData.datesorti"
+              name="datesorti"
+              required readonly>
+          </div>
+
                <!-- Fichier à uploader -->
           <div class="col-md-12 mb-3">
             <label class="form-label">Téléverser fiche de sortie</label>
@@ -126,7 +140,6 @@
               name="statut"
               required>
               <option value="">-- Choisir --</option>
-              <option value="encours">En cours</option>
               <option value="resolu">Résolu</option>
               <option value="rebut">Rebut</option>
             </select>

@@ -25,18 +25,20 @@ sorti:any
     origine: '',
     codeSite: '',
     numeroSerie: '',
-    motif: '',
     traitement: '',
     dateDebut: '',
-    dateFin: '',
+    datesorti: '',
     statut: '',
     eqpt: '',
-    model: ''
+    model: '',
+    motifentre:''
   };
 
   constructor(private dataservice:ServiceSortie){}
 
   onSubmit() {
+
+  
     // ✅ message succès
           Swal.fire({
                   icon: 'success',
@@ -52,13 +54,14 @@ sorti:any
     origine: '',
     codeSite: '',
     numeroSerie: '',
-    motif: '',
     traitement: '',
     dateDebut: '',
-    dateFin: '',
+    datesorti: '',
     statut: '',
     eqpt: '',
-    model: ''
+    model: '',
+    motifentre:'',
+    
   };
 
   }
@@ -67,10 +70,15 @@ sorti:any
     this.donneesRecherche = data;
     console.log(data);
     // remplissage automatique des champs
-      this.formData.eqpt = data.data[0].eqpt;
-      this.formData.model = data.data[0].model;
-      this.formData.codeSite = data.data[0].cod_sit;
-      this.formData.numeroSerie = data.data[0].serial_num;
+      this.formData.eqpt = data.eqpt;
+      this.formData.model = data.model;
+      this.formData.codeSite = data.cod_sit;
+      this.formData.numeroSerie = data.serial_num;
+      this.formData.motifentre = data.motif;
+      this.formData.dateEntree = data.date_entree;
+      this.formData.eqpt = data.nom_eqpt;
+      this.formData.origine = data.nom_site;
+
       
 }
 
