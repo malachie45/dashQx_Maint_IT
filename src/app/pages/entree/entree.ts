@@ -14,6 +14,9 @@ import Swal from 'sweetalert2';
   styleUrl: './entree.css',
 })
 export class Entree implements OnInit {
+onFileSelected($event: Event) {
+throw new Error('Method not implemented.');
+}
 
   eqpt: any;
   eq: any[] = [];
