@@ -1,17 +1,31 @@
 import { Routes } from '@angular/router';
 
+import { Register } from './authent/register/register'
+import { Login } from './authent/login/login';
+
 export const routes: Routes = [
-  {
-    path: '',
+  
+    {
+        path: '',
+        component: Login
+    },
+
+    {
+        path: 'creercpte',
+        component: Register
+    },
+  
+  { 
+    path: 'lay',
     loadComponent: () =>
       import('./layout/layoutdash/layoutdash').then(m => m.Layoutdash),
 
     children: [
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      },
+      // {
+      //   path: '',
+      //   redirectTo: 'dashboard',
+      //   pathMatch: 'full'
+      // },
 
       {
         path: 'dashbo',
@@ -56,7 +70,10 @@ export const routes: Routes = [
       },
 
     ]
-  }
+    
+    
+  },
+
 ]
   
   

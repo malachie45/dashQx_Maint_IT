@@ -1,0 +1,60 @@
+.auth-section {
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay gradient */
+.gradient-custom-3 {
+  background: linear-gradient(
+    to right,
+    rgba(132, 250, 176, 0.45),
+    rgba(143, 211, 244, 0.45)
+  );
+}
+
+/* Card */
+.auth-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+/* Checkbox */
+.form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Button */
+.btn-primary {
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 12px;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .auth-card .card-body {
+    padding: 2rem;
+  }
+}
