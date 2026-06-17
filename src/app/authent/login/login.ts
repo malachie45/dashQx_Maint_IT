@@ -17,7 +17,9 @@ import { Loginservice } from '../../service/loginservice';
 export class Login {
 
   //soumission du formulaire
-  onSubmit() {}
+  onSubmit() {
+    this.userconnect()
+  }
 
   // click sur le bouton annuler
   onReset(form: NgForm) {
