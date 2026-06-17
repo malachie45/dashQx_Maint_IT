@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone:true,
-  imports: [RouterLink, RouterModule,CommonModule, FormsModule],
+  imports: [RouterModule,CommonModule, FormsModule],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
@@ -47,6 +47,7 @@ export class Register {
   constructor(
     private router:Router,
     private registerservice:Registerservice){}
+    
 
   // créer un utilisateur
 
