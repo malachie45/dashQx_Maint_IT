@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';  // nécessaire pour *ngFor
+import { Statistiques } from '../../service/statistiques';
 
 
 interface EquipementStats {
@@ -29,10 +30,13 @@ export class Dashboard implements OnInit {
     equipements: []
   };
 
-  constructor() { }
+  constructor(private statservice:Statistiques) { }
+
+  statss: any = {};
 
   ngOnInit(): void {
     this.loadStats();
+    this.getstatis();
   }
 
   loadStats(): void {
@@ -48,5 +52,12 @@ export class Dashboard implements OnInit {
       ]
     };
   }
+
+  //conexion au service stat
+  getstatis(){
+        this.statservice.getstatistiq().subscribe(res =>{
+        this.statss = res;
+      });
+    }
 
 }
