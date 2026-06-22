@@ -16,6 +16,9 @@ import { Loginservice } from '../../service/loginservice';
 })
 export class Login {
 
+   // Permet d'afficher ou masquer le mot de passe
+    showPassword: boolean = false;
+
   //soumission du formulaire
   onSubmit() {
     this.userconnect()

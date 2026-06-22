@@ -14,9 +14,23 @@ import { Router } from '@angular/router';
   styleUrl: './register.css',
 })
 export class Register {
+showConfirmPassword: boolean = false;
+
+  
 
 //validation du formulaire
   onSubmit() {
+
+    if (this.formData.password !== this.formData.password_confirmation) {
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur',
+      text: 'Les mots de passe ne correspondent pas.'
+    });
+
+    return; // Arrête la soumission
+  }
     //appel de la fonction d'insertion
     this.createuser();
 }

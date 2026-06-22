@@ -32,10 +32,34 @@
                     placeholder="Email" required>
                 </div>
 
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                   <input [(ngModel)]="formData.password" 
                   name="password" type="password" class="form-control" 
                     placeholder="Mot de passe" required>
+                </div> -->
+
+                <div class="mb-3 position-relative">
+                    <input
+                      [(ngModel)]="formData.password"
+                      name="password"
+                      [type]="showPassword ? 'text' : 'password'"
+                      class="form-control pe-5"
+                      placeholder="Mot de passe"
+                      required>
+
+                    <i
+                      class="bi"
+                      [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"
+                      (click)="showPassword = !showPassword"
+                      style="
+                        position: absolute;
+                        top: 50%;
+                        right: 15px;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        font-size: 1.2rem;
+                      ">
+                    </i>
                 </div>
 
                 <div class="d-flex justify-content-between mb-4">
