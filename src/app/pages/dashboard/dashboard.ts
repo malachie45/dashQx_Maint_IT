@@ -33,10 +33,12 @@ export class Dashboard implements OnInit {
   constructor(private statservice:Statistiques) { }
 
   statss: any = {};
+  statssbyeqpt: any[] = [];
 
   ngOnInit(): void {
     this.loadStats();
     this.getstatis();
+    this.getstatisbyeqpt();
   }
 
   loadStats(): void {
@@ -57,6 +59,13 @@ export class Dashboard implements OnInit {
   getstatis(){
         this.statservice.getstatistiq().subscribe(res =>{
         this.statss = res;
+      });
+    }
+
+    //gestion du tableau des stat
+    getstatisbyeqpt(){
+      this.statservice.getstatpareqpt().subscribe(res =>{
+        this.statssbyeqpt = res;
       });
     }
 

@@ -65,6 +65,20 @@ export class Entree implements OnInit {
 
     this.insertentreedata();
 
+    // réinitialisation du formulaire
+        this.formData = {
+          dateEntree: '',
+          modele: '',
+          id_sit: null,
+          id_eqpt: null,
+          codeSite: '',
+          numeroSerie: '',
+          motif: '',
+          dateDebut: '',
+          statut: '',
+          fichier: ''
+        };
+
   }
 
   onReset(form: NgForm) {
@@ -141,19 +155,7 @@ export class Entree implements OnInit {
           showConfirmButton: false
         });
 
-        // réinitialisation du formulaire
-        this.formData = {
-          dateEntree: '',
-          modele: '',
-          id_sit: null,
-          id_eqpt: null,
-          codeSite: '',
-          numeroSerie: '',
-          motif: '',
-          dateDebut: '',
-          statut: '',
-          fichier: ''
-        };
+        
 
       },
 

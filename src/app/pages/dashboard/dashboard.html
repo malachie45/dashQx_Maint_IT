@@ -41,15 +41,14 @@
             <th>Équipement</th>
             <th>Entrées</th>
             <th>Sorties</th>
-            <th>Missions</th>
+       
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let equip of stats.equipements">
-            <td>{{ equip.nom }}</td>
-            <td>{{ equip.entrees }}</td>
-            <td>{{ equip.sorties }}</td>
-            <td>{{ equip.missions }}</td>
+          <tr *ngFor="let statby of statssbyeqpt">
+            <td>{{ statby.nom_eqpt }}</td>
+            <td>{{ statby.entrees }}</td>
+            <td>{{ statby.sorties }}</td>
           </tr>
         </tbody>
       </table>

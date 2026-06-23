@@ -50,10 +50,7 @@
               [(ngModel)]="formData.modele"
               name="modele"
 >
-            <input type="text" class="form-control"
-              [(ngModel)]="formData.modele"
-              name="model"
->
+
 
           </div>
 
@@ -170,7 +167,7 @@
               type="file"
               class="form-control"
               name="fichier"
-              accept=".jpg,.jpeg,.png,.gif"
+              accept=".jpg,.jpeg,.png,.gif,.pdf"
               (change)="onFileSelected($event)"
               required>
 
