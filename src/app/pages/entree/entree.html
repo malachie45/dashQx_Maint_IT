@@ -210,12 +210,33 @@
                 En cours
               </option>
 
-              <option value="resolu">
-                Résolu
+              <option value="rebut">
+                Rejeté
               </option>
 
-              <option value="rebut">
-                Rebut
+            </select>
+
+          </div>
+
+          <!-- TECHNICIEN TRAITANT -->
+          <div class="col-md-4 mb-3">
+
+            <label class="form-label">Technicien</label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="formData.id_techn"
+              name="id_techn"
+              required>
+
+              <option [ngValue]="null">-- Choisir --</option>
+
+              <option
+                *ngFor="let eqp of eq"
+                [ngValue]="eqp.id">
+
+                {{ eqp.nom_eqpt }}
+
               </option>
 
             </select>
