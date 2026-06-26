@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white text-center">
+      <h5 class="mb-0">Type de Maintenance</h5>
+    </div>
+
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+        <div class="row">
+
+
+         <!-- Matricule -->
+           <div class="col-md-4 mb-3">
+           
+          </div> 
+         <!-- Matricule -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Type de maintenance</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.typ_trait"
+              name="typ_trait"
+              required placeholder="saisir le type d'intervention">
+          </div>
+         <!-- Matricule -->
+           <div class="col-md-4 mb-3">
+            
+          </div> 
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <button type="reset" class="btn btn-outline-secondary" (click)="onReset(form)">
+            Annuler
+          </button>
+
+          <button type="submit" class="btn btn-success" >
+            Enregistrer
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

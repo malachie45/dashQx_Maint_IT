@@ -39,6 +39,12 @@ export const routes: Routes = [
           import('./pages/entree/entree').then(m => m.Entree)
       },
 
+       {
+        path: 'typeMaint',
+        loadComponent: () =>
+          import('./pages/typemaintenance/typemaintenance').then(m => m.Typemaintenance)
+      }, 
+
       {
         path: 'sortie',
         loadComponent: () =>

@@ -19,6 +19,8 @@ export class Entree implements OnInit {
   eqpt: any;
   eq: any[] = [];
   sit: any[] = [];
+  techno: any[] = [];
+  typinterv: any[] = [];
 
   // fichier sélectionné
   selectedFile!: File;
@@ -32,6 +34,7 @@ export class Entree implements OnInit {
     id_sit: null,
     id_eqpt: null,
     id_techn: null,
+    id_typinterv: null,
     codeSite: '',
     numeroSerie: '',
     motif: '',
@@ -45,8 +48,12 @@ export class Entree implements OnInit {
 
   ngOnInit() {
 
+    //initialisation des combo
     this.combogeteqpt();
     this.combogetsitFentrees();
+    this.combogettechnoFentrees()
+    this.combogettypintervFentrees()
+    
 
   }
 
@@ -73,6 +80,7 @@ export class Entree implements OnInit {
           id_sit: null,
           id_eqpt: null,
           id_techn: null,
+          id_typinterv: null,
           codeSite: '',
           numeroSerie: '',
           motif: '',
@@ -110,6 +118,29 @@ export class Entree implements OnInit {
     });
 
   }
+  // récupération des Technicien
+  combogettechnoFentrees() {
+
+    this.entreeservice.gettechnoComboFentree().subscribe(res => {
+
+      this.techno = res;
+
+    });
+
+  }
+  // récupération des Technicien
+  combogettypintervFentrees() {
+
+    this.entreeservice.gettypintervComboFentree().subscribe(res => {
+
+      this.typinterv = res;
+
+    });
+
+  }
+
+
+
 
   // récupération des équipements
   combogeteqpt() {

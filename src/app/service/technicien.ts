@@ -23,6 +23,11 @@ constructor(private httpclient:HttpClient){}
     return this.httpclient.post('http://127.0.0.1:8000/api/intech', data);
   }
 
+  // ajouter un type de maintenance
+  insertypmaint(data: any): Observable<any> {
+    return this.httpclient.post('http://127.0.0.1:8000/api/intypmaint', data);
+  }
+
   // modifier un équipement
   updatesortie(id: number, data: any): Observable<any> {
     return this.httpclient.put(`${this.apiUrl}/${id}`, data);
