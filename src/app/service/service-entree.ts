@@ -28,6 +28,16 @@ constructor(private httpclient:HttpClient){}
       return this.httpclient.get('http://127.0.0.1:8000/api/combsiteentre');
     }
 
+    // récupérer la liste des technicien
+    gettechnoComboFentree(): Observable<any> {
+      return this.httpclient.get('http://127.0.0.1:8000/api/techno');
+    }
+
+    // récupérer la liste des type de maintenance
+    gettypintervComboFentree(): Observable<any> {
+      return this.httpclient.get('http://127.0.0.1:8000/api/typinterv');
+    }
+
   // ajouter un équipement
   insertEntree(data: any): Observable<any> {
     return this.httpclient.post('http://127.0.0.1:8000/api/inentrees', data);
