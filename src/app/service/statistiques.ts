@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,18 +7,46 @@ import { Observable } from 'rxjs';
 })
 export class Statistiques {
 
+  private api = 'http://127.0.0.1:8000/api';
 
-  constructor(private httpclient:HttpClient){}
+  constructor(private httpclient: HttpClient) {}
 
+  // =============================
+  // KPI
+  // =============================
+  getstatistiq(
+    dateDebut: string,
+    dateFin: string
+  ): Observable<any> {
 
-  // récupérer la liste
-  getstatistiq(): Observable<any> {
-    return this.httpclient.get('http://127.0.0.1:8000/api/statistiques');
+    const params = new HttpParams()
+      .set('dateDebut', dateDebut)
+      .set('dateFin', dateFin);
+
+    return this.httpclient.get(
+      `${this.api}/statistiques`,
+      { params }
+    );
+
   }
 
-  // récupérer la liste
-  getstatpareqpt(): Observable<any> {
-    return this.httpclient.get('http://127.0.0.1:8000/api/statentresorti');
+  // =============================
+  // Tableau + graphique
+  // =============================
+  getstatpareqpt(
+    dateDebut: string,
+    dateFin: string
+  ): Observable<any> {
+
+    const params = new HttpParams()
+      .set('dateDebut', dateDebut)
+      .set('dateFin', dateFin);
+
+    return this.httpclient.get(
+      `${this.api}/statentresorti`,
+      { params }
+    );
+
   }
-  
+
 }
