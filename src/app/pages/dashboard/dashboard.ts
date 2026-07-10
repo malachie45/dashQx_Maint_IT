@@ -16,6 +16,7 @@ import {
   LinearScale
 } from 'chart.js';
 
+
 Chart.register(
   PieController,
   ArcElement,
@@ -27,262 +28,418 @@ Chart.register(
   LinearScale
 );
 
+
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [
+  standalone:true,
+  imports:[
     CommonModule,
     FormsModule,
     BaseChartDirective
   ],
-  templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  templateUrl:'./dashboard.html',
+  styleUrl:'./dashboard.css'
 })
 export class Dashboard implements OnInit {
 
-  // =============================
-  // FILTRE DE PERIODE
-  // =============================
 
-  periode: string = 'month';
+  // ===============================
+  // FILTRE PERIODE
+  // ===============================
 
-  dateDebut: string = '';
+  periode:string = "month";
 
-  dateFin: string = '';
+  dateDebut:string = '';
 
-  // =============================
-  // PIE CHART
-  // =============================
+  dateFin:string = '';
 
-  pieChartLabels: string[] = [
-    'Entrées',
-    'Sorties',
-    'Missions'
-  ];
 
-  pieChartData = [
-    {
-      data: [0, 0, 0],
-      backgroundColor: [
-        '#0d6efd',
-        '#198754',
-        '#ffc107'
-      ]
-    }
-  ];
-
-  // =============================
-  // BAR CHART
-  // =============================
-
-  barChartLabels: string[] = [];
-
-  barChartData = [
-    {
-      data: [] as number[],
-      label: 'Entrées',
-      backgroundColor: '#0d6efd'
-    },
-    {
-      data: [] as number[],
-      label: 'Sorties',
-      backgroundColor: '#198754'
-    }
-  ];
-
-  // =============================
+  // ===============================
   // DONNEES
-  // =============================
+  // ===============================
 
-  statss: any = {};
+  statss:any = {};
 
-  statssbyeqpt: any[] = [];
+  statssbyeqpt:any[]=[];
+
+  bilanEqpt:any[]=[];
+
+
 
   constructor(
-    private statservice: Statistiques
-  ) { }
+    private statservice:Statistiques
+  ){}
 
-  // =============================
-  // INITIALISATION
-  // =============================
 
-  ngOnInit(): void {
+
+  ngOnInit():void{
 
     this.changerPeriode();
 
   }
 
-  // =============================
-  // GESTION DE LA PERIODE
-  // =============================
 
-  changerPeriode(): void {
 
-    const today = new Date();
+  // ===============================
+  // GESTION PERIODE
+  // ===============================
 
-    switch (this.periode) {
+  changerPeriode(){
 
-      case 'today':
 
-        this.dateDebut = this.formatDate(today);
-        this.dateFin = this.formatDate(today);
+    let today = new Date();
 
-        break;
 
-      case 'week':
+    switch(this.periode){
 
-        const debutSemaine = new Date(today);
-        debutSemaine.setDate(today.getDate() - today.getDay() + 1);
 
-        const finSemaine = new Date(debutSemaine);
-        finSemaine.setDate(debutSemaine.getDate() + 6);
+      case "today":
 
-        this.dateDebut = this.formatDate(debutSemaine);
-        this.dateFin = this.formatDate(finSemaine);
+        this.dateDebut=this.formatDate(today);
+        this.dateFin=this.formatDate(today);
 
-        break;
+      break;
 
-      case 'month':
 
-        this.dateDebut = this.formatDate(
-          new Date(today.getFullYear(), today.getMonth(), 1)
+
+      case "month":
+
+        this.dateDebut=this.formatDate(
+          new Date(today.getFullYear(),today.getMonth(),1)
         );
 
-        this.dateFin = this.formatDate(
-          new Date(today.getFullYear(), today.getMonth() + 1, 0)
+
+        this.dateFin=this.formatDate(
+          new Date(today.getFullYear(),today.getMonth()+1,0)
         );
 
-        break;
+      break;
 
-      case 'lastMonth':
 
-        this.dateDebut = this.formatDate(
-          new Date(today.getFullYear(), today.getMonth() - 1, 1)
+
+      case "lastMonth":
+
+        this.dateDebut=this.formatDate(
+          new Date(today.getFullYear(),today.getMonth()-1,1)
         );
 
-        this.dateFin = this.formatDate(
-          new Date(today.getFullYear(), today.getMonth(), 0)
+
+        this.dateFin=this.formatDate(
+          new Date(today.getFullYear(),today.getMonth(),0)
         );
 
-        break;
+      break;
 
-      case 'year':
 
-        this.dateDebut = this.formatDate(
-          new Date(today.getFullYear(), 0, 1)
+
+      case "year":
+
+        this.dateDebut=this.formatDate(
+          new Date(today.getFullYear(),0,1)
         );
 
-        this.dateFin = this.formatDate(
-          new Date(today.getFullYear(), 11, 31)
+
+        this.dateFin=this.formatDate(
+          new Date(today.getFullYear(),11,31)
         );
 
-        break;
+      break;
 
-      case 'custom':
+
+      case "custom":
 
         return;
 
     }
 
+
     this.actualiserDashboard();
 
   }
 
-  // =============================
-  // ACTUALISER DASHBOARD
-  // =============================
 
-  actualiserDashboard(): void {
+
+
+
+  // ===============================
+  // RAFRAICHIR DASHBOARD
+  // ===============================
+
+  actualiserDashboard(){
+
+
+    console.log(
+      "periode :",
+      this.dateDebut,
+      this.dateFin
+    );
+
 
     this.getstatis();
 
     this.getstatisbyeqpt();
 
+    this.getBilanEquipements();
+
   }
 
-  // =============================
+
+
+
+
+  // ===============================
   // KPI
-  // =============================
+  // ===============================
 
-  getstatis(): void {
+  getstatis(){
 
-    // Étape suivante :
-    // on enverra dateDebut et dateFin au service Laravel
 
-    this.statservice.getstatistiq(this.dateDebut,
-    this.dateFin).subscribe((res: any) => {
+    this.statservice
+    .getstatistiq(
+      this.dateDebut,
+      this.dateFin
+    )
+    .subscribe({
 
-      this.statss = res;
+      next:(res:any)=>{
 
-      this.pieChartData = [
-        {
-          data: [
-            res.nombre_entrees,
-            res.nombre_sorties,
-            res.nombre_missions
-          ],
-          backgroundColor: [
-            '#0d6efd',
-            '#198754',
-            '#ffc107'
-          ]
-        }
-      ];
 
-    });
+        this.statss=res;
 
-  }
 
-  // =============================
-  // TABLEAU + BAR CHART
-  // =============================
+        this.pieChartData=[
 
-  getstatisbyeqpt(): void {
+          {
+            data:[
+              res.nombre_entrees,
+              res.nombre_sorties,
+              res.nombre_missions
+            ],
 
-    // Étape suivante :
-    // on enverra dateDebut et dateFin au service Laravel
+            backgroundColor:[
+              '#0d6efd',
+              '#198754',
+              '#ffc107'
+            ]
 
-    this.statservice.getstatpareqpt(this.dateDebut,
-    this.dateFin).subscribe((res: any[]) => {
+          }
 
-      this.statssbyeqpt = res;
+        ];
 
-      this.barChartLabels = res.map(item => item.nom_eqpt);
 
-      this.barChartData = [
+      },
 
-        {
-          data: res.map(item => item.entrees),
-          label: 'Entrées',
-          backgroundColor: '#0d6efd'
-        },
 
-        {
-          data: res.map(item => item.sorties),
-          label: 'Sorties',
-          backgroundColor: '#198754'
-        }
+      error:(err)=>{
 
-      ];
+        console.log(err);
+
+      }
+
 
     });
 
-  }
-
-  // =============================
-  // FORMAT DATE
-  // =============================
-
-  private formatDate(date: Date): string {
-
-    const annee = date.getFullYear();
-
-    const mois = String(date.getMonth() + 1).padStart(2, '0');
-
-    const jour = String(date.getDate()).padStart(2, '0');
-
-    return `${annee}-${mois}-${jour}`;
 
   }
+
+
+
+
+
+
+  // ===============================
+  // TABLEAU EQUIPEMENT
+  // ===============================
+
+  getstatisbyeqpt(){
+
+
+    this.statservice
+    .getstatpareqpt(
+      this.dateDebut,
+      this.dateFin
+    )
+    .subscribe({
+
+      next:(res:any[])=>{
+
+
+        this.statssbyeqpt=res;
+
+
+        this.barChartLabels =
+        res.map(x=>x.nom_eqpt);
+
+
+
+        this.barChartData=[
+
+          {
+
+            data:
+            res.map(x=>x.entrees),
+
+            label:"Entrées",
+
+            backgroundColor:"#0d6efd"
+
+          },
+
+
+          {
+
+            data:
+            res.map(x=>x.sorties),
+
+            label:"Sorties",
+
+            backgroundColor:"#198754"
+
+          }
+
+        ];
+
+
+      },
+
+
+      error:(err)=>{
+
+        console.log(err);
+
+      }
+
+
+    });
+
+
+  }
+
+
+
+
+
+
+
+  // ===============================
+  // BILAN STATUT MAINTENANCE
+  // ===============================
+
+
+  getBilanEquipements(){
+
+
+    this.statservice
+    .getstatuettaux(
+      this.dateDebut,
+      this.dateFin
+    )
+    .subscribe({
+
+      next:(res:any[])=>{
+
+
+        console.log(
+          "Bilan maintenance",
+          res
+        );
+
+
+        this.bilanEqpt=res;
+
+
+      },
+
+
+      error:(err)=>{
+
+        console.log(err);
+
+      }
+
+    });
+
+
+  }
+
+
+
+
+
+
+  // ===============================
+  // CHARTS
+  // ===============================
+
+
+  pieChartLabels=[
+    "Entrées",
+    "Sorties",
+    "Missions"
+  ];
+
+
+  pieChartData:any=[
+
+    {
+
+      data:[
+        0,
+        0,
+        0
+      ],
+
+      backgroundColor:[
+        "#0d6efd",
+        "#198754",
+        "#ffc107"
+      ]
+
+    }
+
+  ];
+
+
+
+  barChartLabels:string[]=[];
+
+
+  barChartData:any=[
+
+    {
+
+      data:[],
+      label:"Entrées",
+      backgroundColor:"#0d6efd"
+
+    },
+
+
+    {
+
+      data:[],
+      label:"Sorties",
+      backgroundColor:"#198754"
+
+    }
+
+  ];
+
+
+
+
+
+  private formatDate(date:Date):string{
+
+
+    return date.getFullYear()
+    +"-"+
+    String(date.getMonth()+1).padStart(2,'0')
+    +"-"+
+    String(date.getDate()).padStart(2,'0');
+
+  }
+
+
 
 }

@@ -14,8 +14,17 @@
 
         <div class="row">
 
+           <!-- Code site -->
+          <div class="col-md-2 mb-3">
+            <label class="form-label">numero d'ordre</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="formData.num_ord"
+              name="num_ord"
+              required  readonly>
+          </div>
+
           <!-- equipement -->
-          <div class="col-md-4 mb-3">
+          <div class="col-md-2 mb-3">
             <label class="form-label">Equipement</label>
             <input type="text" class="form-control"
               [(ngModel)]="formData.eqpt"
@@ -24,7 +33,7 @@
           </div>  
 
           <!-- model -->
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <label class="form-label">Model</label>
             <input type="text" class="form-control"
               [(ngModel)]="formData.model"
@@ -34,7 +43,7 @@
 
 
           <!-- Code site -->
-          <div class="col-md-4 mb-3">
+          <div class="col-md-2 mb-3">
             <label class="form-label">Code site</label>
             <input type="text" class="form-control"
               [(ngModel)]="formData.codeSite"
@@ -43,13 +52,15 @@
           </div>
 
           <!-- Numéro de série -->
-          <div class="col-md-6 mb-3">
+          <div class="col-md-2 mb-3">
             <label class="form-label">Numéro de série</label>
             <input type="text" class="form-control"
               [(ngModel)]="formData.numeroSerie"
-              name="numeroSerie "
+              name="numeroSerie"
               required placeholder="SN:xxxxxxxxx" readonly>
           </div>
+
+          
 
 
           <!-- motif d'entrée -->
@@ -128,8 +139,10 @@
                <!-- Fichier à uploader -->
           <div class="col-md-12 mb-3">
             <label class="form-label">Téléverser fiche de sortie</label>
-            <input type="file" class="form-control"
-                   >
+            <input
+                type="file"
+                class="form-control"
+                (change)="onFileSelected($event)">
           </div>
 
           <!-- Statut -->
@@ -141,7 +154,7 @@
               required>
               <option value="">-- Choix --</option>
               <option value="resolu">Résolu</option>
-              <option value="rebut">Rebut</option>
+              <option value="rebut">Irrécupérable</option>
             </select>
           </div>
 

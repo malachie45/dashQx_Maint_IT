@@ -3,34 +3,65 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
+
 export class ServiceSortie {
 
-  apiUrl = "http://127.0.0.1:8000/api/recup";
+  private apiUrl = 'http://127.0.0.1:8000/api';
 
-  apiUrl2 = "http://127.0.0.1:8000/api/recup";
+  constructor(
+    private httpclient: HttpClient
+  ) {}
 
-constructor(private httpclient:HttpClient){}
+  //===========================
+  // Liste
+  //===========================
 
-// récupérer la liste
-  getsorti(): Observable<any> {
-    return this.httpclient.get('http://127.0.0.1:8000/api/recup');
+  getsorti(): Observable<any>{
+
+    return this.httpclient.get(
+      `${this.apiUrl}/recup`
+    );
+
   }
 
-  // ajouter un équipement
-  insertsortie(data: any): Observable<any> {
-    return this.httpclient.post('http://127.0.0.1:8000/api/insortis', data);
+  //===========================
+  // Insertion
+  //===========================
+
+  insertsortie(data: FormData): Observable<any>{
+
+    return this.httpclient.post(
+      `${this.apiUrl}/insortis`,
+      data
+    );
+
   }
 
-  // modifier un équipement
-  updatesortie(id: number, data: any): Observable<any> {
-    return this.httpclient.put(`${this.apiUrl}/${id}`, data);
+  //===========================
+  // Modification
+  //===========================
+
+  updatesortie(id:number,data:any):Observable<any>{
+
+    return this.httpclient.put(
+      `${this.apiUrl}/recup/${id}`,
+      data
+    );
+
   }
 
-  // supprimer un équipement
-  deletesortie(id: number): Observable<any> {
-    return this.httpclient.delete(`${this.apiUrl2}/${id}`);
+  //===========================
+  // Suppression
+  //===========================
+
+  deletesortie(id:number):Observable<any>{
+
+    return this.httpclient.delete(
+      `${this.apiUrl}/recup/${id}`
+    );
+
   }
 
 }

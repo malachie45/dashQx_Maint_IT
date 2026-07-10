@@ -120,11 +120,105 @@
 
   </div>
 
+  <br>
+
+    <!--TABLEAU TAUX-->
+
+  <div class="card shadow-sm mt-4">
+
+  <div class="card-header bg-info text-white">
+
+      Bilan maintenance par équipement
+
+  </div>
+
+  <div class="card-body">
+
+    <table class="table table-bordered table-hover">
+
+      <thead class="table-dark">
+
+        <tr>
+
+          <th>Equipement</th>
+
+          <th>Total entrées</th>
+
+          <th>Résolus</th>
+
+          <th>En cours</th>
+
+          <th>Irrécupérables</th>
+
+          <th>Taux résolution</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let item of bilanEqpt">
+
+          <td>{{ item.nom_eqpt }}</td>
+
+          <td>{{ item.total_entrees }}</td>
+
+          <td>
+
+            <span class="badge bg-success">
+
+              {{ item.resolus }}
+
+            </span>
+
+          </td>
+
+          <td>
+
+            <span class="badge bg-warning text-dark">
+
+              {{ item.en_cours }}
+
+            </span>
+
+          </td>
+
+          <td>
+
+            <span class="badge bg-danger">
+
+              {{ item.rebuts }}
+
+            </span>
+
+          </td>
+
+          <td>
+
+            <span class="badge bg-primary">
+
+              {{ item.taux_resolution }} %
+
+            </span>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+<br><br>
   <!-- TABLEAU -->
   <div class="card shadow-sm mb-4">
 
     <div class="card-header bg-dark text-white">
-      Détails par équipement
+      TRAVAUX NEUFS
     </div>
 
     <div class="card-body">
@@ -134,8 +228,8 @@
         <thead class="table-dark">
           <tr>
             <th>Équipement</th>
-            <th>Entrées</th>
-            <th>Sorties</th>
+            <th>Reception Technique</th>
+            <!-- <th>Sorties</th> -->
           </tr>
         </thead>
 
@@ -143,8 +237,8 @@
 
           <tr *ngFor="let statby of statssbyeqpt">
             <td>{{ statby.nom_eqpt }}</td>
-            <td>{{ statby.entrees }}</td>
-            <td>{{ statby.sorties }}</td>
+            <td>{{ statby.Travaux_neufs }}</td>
+            <!-- <td>{{ statby.sorties }}</td> -->
           </tr>
 
         </tbody>

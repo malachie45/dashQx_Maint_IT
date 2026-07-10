@@ -49,4 +49,24 @@ export class Statistiques {
 
   }
 
+
+  // =============================
+  // Taux par statut et par eqpt
+  // =============================
+  getstatuettaux(
+    dateDebut: string,
+    dateFin: string
+  ): Observable<any> {
+
+    const params = new HttpParams()
+      .set('dateDebut', dateDebut)
+      .set('dateFin', dateFin);
+
+    return this.httpclient.get(
+      `${this.api}/bilanequipements`,
+      { params }
+    );
+
+  }
+
 }
