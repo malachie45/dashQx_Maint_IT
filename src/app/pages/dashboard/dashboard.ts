@@ -251,7 +251,7 @@ export class Dashboard implements OnInit {
   // TABLEAU EQUIPEMENT
   // ===============================
 
-  getstatisbyeqpt(){
+  /* getstatisbyeqpt(){
 
 
     this.statservice
@@ -313,10 +313,65 @@ export class Dashboard implements OnInit {
     });
 
 
-  }
+  } */
 
 
 
+getstatisbyeqpt(): void {
+  this.statservice
+    .getstatpareqpt(this.dateDebut, this.dateFin)
+    .subscribe({
+      next: (res: any) => {
+        console.log('Réponse API équipements :', res);
+
+        // Vérifier que l'API retourne un tableau
+        if (!Array.isArray(res)) {
+          console.error('La réponse API doit être un tableau.', res);
+          this.barChartLabels = [];
+          this.barChartData = [
+            { data: [], label: 'Entrées', backgroundColor: '#0d6efd' },
+            { data: [], label: 'Sorties', backgroundColor: '#198754' }
+          ];
+          return;
+        }
+
+        // Afficher les clés réellement reçues
+        if (res.length > 0) {
+          console.log('Propriétés du premier équipement :', res[0]);
+        }
+
+        this.statssbyeqpt = res;
+
+        this.barChartLabels = res.map(
+          (x: any) => x.nom_eqpt ?? 'Équipement inconnu'
+        );
+
+        this.barChartData = [
+          {
+            data: res.map(
+              (x: any) => Number(x.entrees ?? 0)
+            ),
+            label: 'Entrées',
+            backgroundColor: '#0d6efd'
+          },
+          {
+            data: res.map(
+              (x: any) => Number(x.sorties ?? 0)
+            ),
+            label: 'Sorties',
+            backgroundColor: '#198754'
+          }
+        ];
+
+        console.log('Labels du graphique :', this.barChartLabels);
+        console.log('Données du graphique :', this.barChartData);
+      },
+
+      error: (err: any) => {
+        console.error('Erreur API graphique :', err);
+      }
+    });
+}
 
 
 
