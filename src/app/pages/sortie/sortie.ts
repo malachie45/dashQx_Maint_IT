@@ -18,6 +18,7 @@ export class Sortie {
 
   constructor(
     private dataservice: ServiceSortie
+    
   ) {}
 
   //===========================

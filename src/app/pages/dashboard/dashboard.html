@@ -88,6 +88,67 @@
 
 </div>
 
+
+  <!-- ALERTE ÉQUIPEMENTS EN COURS -->
+  <div class="row mb-4">
+
+    <div class="col-12">
+
+      <div
+        class="card shadow-sm border-warning"
+        [ngClass]="nombreEnCours > 0
+          ? 'bg-warning-subtle'
+          : 'bg-success-subtle'">
+
+        <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+
+          <div class="d-flex align-items-center gap-3">
+
+            <i
+              class="bi"
+              [ngClass]="nombreEnCours > 0
+                ? 'bi-exclamation-triangle-fill text-warning'
+                : 'bi-check-circle-fill text-success'"
+              style="font-size: 2.5rem;">
+            </i>
+
+            <div>
+              <h5 class="mb-1">
+                Équipements en cours de maintenance
+              </h5>
+
+              <p class="mb-0 text-secondary">
+                {{ nombreEnCours > 0
+                  ? 'Des équipements nécessitent un suivi.'
+                  : 'Aucun équipement en cours actuellement.' }}
+              </p>
+            </div>
+
+          </div>
+
+          <div class="text-center">
+            <span
+              class="badge fs-4"
+              [ngClass]="nombreEnCours > 0
+                ? 'bg-warning text-dark'
+                : 'bg-success'">
+
+              {{ nombreEnCours }}
+
+            </span>
+
+            <div class="small mt-1">Équipement(s)</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
   <!-- KPI -->
   <div class="row mb-4">
 

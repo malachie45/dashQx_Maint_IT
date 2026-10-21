@@ -69,4 +69,24 @@ export class Statistiques {
 
   }
 
+   // =============================
+  // Alerte jean
+  // =============================
+
+  
+
+alertencour(dateDebut?: string, dateFin?: string) {
+  let params: any = {};
+
+  if (dateDebut && dateFin) {
+    params = { dateDebut, dateFin };
+  }
+
+  return this.httpclient.get<{ nombre_en_cours: number }>(
+    'http://127.0.0.1:8000/api/alertencours',
+    { params }
+  );
+}
+
+
 }

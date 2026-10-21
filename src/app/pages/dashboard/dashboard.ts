@@ -66,6 +66,7 @@ export class Dashboard implements OnInit {
 
 
 
+
   constructor(
     private statservice:Statistiques
   ){}
@@ -75,6 +76,8 @@ export class Dashboard implements OnInit {
   ngOnInit():void{
 
     this.changerPeriode();
+
+    
 
   }
 
@@ -157,7 +160,26 @@ export class Dashboard implements OnInit {
 
   }
 
+ // ===============================
+  // ALERTE DES INTERVENTIONS EN COURS
+  // ===============================
+  
+  nombreEnCours: number = 0;
 
+
+chargerAlertencours(): void {
+  this.statservice.alertencour(
+    this.dateDebut,
+    this.dateFin
+  ).subscribe({
+    next: (response) => {
+      this.nombreEnCours = response.nombre_en_cours;
+    },
+    error: (error) => {
+      console.error('Erreur alerte maintenance :', error);
+    }
+  });
+}
 
 
 
@@ -181,7 +203,10 @@ export class Dashboard implements OnInit {
 
     this.getBilanEquipements();
 
+    this.chargerAlertencours();
+
   }
+
 
 
 
