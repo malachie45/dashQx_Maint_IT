@@ -171,6 +171,8 @@ export class Entree implements OnInit {
     data.append('motif', this.formData.motif);
     data.append('statut', this.formData.statut);
 
+    data.append('id_techn', String(this.formData.id_techn));
+    data.append('id_typinterv', String(this.formData.id_typinterv));
     data.append('id_sit', String(this.formData.id_sit));
     data.append('id_eqpt', String(this.formData.id_eqpt));
 
