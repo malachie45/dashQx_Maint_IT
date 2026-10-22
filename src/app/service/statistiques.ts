@@ -7,9 +7,12 @@ import { Observable } from 'rxjs';
 export interface EquipementEnCours {
   id: number;
   model: string;
+  nom_eqpt: string;
+  motif: string;
   cod_sit: string;
   serial_num: string;
   technicien: string;
+  date_entree: Date;
 }
 
 // Réponse de l'API /alertencours

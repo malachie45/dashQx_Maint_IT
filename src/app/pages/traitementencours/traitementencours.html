@@ -60,16 +60,20 @@
           <thead class="table-light">
             <tr>
               <th>N°</th>
+              <th>Equipement</th>
               <th>Modèle</th>
               <th>Code site</th>
               <th>Numéro de série</th>
               <th>Technicien en charge</th>
+              <th>Motif d'entrée</th>
+              <th>Date d'entrée</th>
             </tr>
           </thead>
 
           <tbody>
             <tr *ngFor="let equipement of equipementsEnCours; let i = index">
               <td>{{ i + 1 }}</td>
+              <td>{{ equipement.nom_eqpt || 'Non renseigné' }}</td>
               <td>{{ equipement.model || 'Non renseigné' }}</td>
               <td>{{ equipement.cod_sit || 'Non renseigné' }}</td>
               <td>{{ equipement.serial_num || 'Non renseigné' }}</td>
@@ -85,6 +89,8 @@
                   </span>
                 </ng-template>
               </td>
+              <td>{{ equipement.motif || 'Non renseigné' }}</td>
+              <td>{{ equipement.date_entree || 'Non renseigné' }}</td>
             </tr>
 
             <tr *ngIf="equipementsEnCours.length === 0">
