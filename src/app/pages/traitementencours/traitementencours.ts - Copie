@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-traitementencours',
+  imports: [],
+  templateUrl: './traitementencours.html',
+  styleUrl: './traitementencours.css',
+})
+export class Traitementencours {
+
+}

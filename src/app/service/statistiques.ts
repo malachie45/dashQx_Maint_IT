@@ -1,6 +1,22 @@
+
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+// Équipement en cours d'intervention
+export interface EquipementEnCours {
+  id: number;
+  model: string;
+  cod_sit: string;
+  serial_num: string;
+  technicien: string;
+}
+
+// Réponse de l'API /alertencours
+export interface AlerteEnCours {
+  nombre_en_cours: number;
+  equipements_en_cours: EquipementEnCours[];
+}
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +43,6 @@ export class Statistiques {
       `${this.api}/statistiques`,
       { params }
     );
-
   }
 
   // =============================
@@ -46,12 +61,10 @@ export class Statistiques {
       `${this.api}/statentresorti`,
       { params }
     );
-
   }
 
-
   // =============================
-  // Taux par statut et par eqpt
+  // Taux par statut et par équipement
   // =============================
   getstatuettaux(
     dateDebut: string,
@@ -66,27 +79,27 @@ export class Statistiques {
       `${this.api}/bilanequipements`,
       { params }
     );
-
   }
 
-   // =============================
-  // Alerte jean
   // =============================
+  // Alerte : équipements en cours
+  // =============================
+  alertencour(
+    dateDebut?: string,
+    dateFin?: string
+  ): Observable<AlerteEnCours> {
 
-  
+    let params = new HttpParams();
 
-alertencour(dateDebut?: string, dateFin?: string) {
-  let params: any = {};
+    if (dateDebut && dateFin) {
+      params = params
+        .set('dateDebut', dateDebut)
+        .set('dateFin', dateFin);
+    }
 
-  if (dateDebut && dateFin) {
-    params = { dateDebut, dateFin };
+    return this.httpclient.get<AlerteEnCours>(
+      `${this.api}/alertencours`,
+      { params }
+    );
   }
-
-  return this.httpclient.get<{ nombre_en_cours: number }>(
-    'http://127.0.0.1:8000/api/alertencours',
-    { params }
-  );
-}
-
-
 }

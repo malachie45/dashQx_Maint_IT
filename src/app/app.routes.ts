@@ -75,6 +75,13 @@ export const routes: Routes = [
          import('./pages/technicien-it/technicien-it').then(m => m.TechnicienIT)
       },
 
+      {
+        path: 'traitementencours',
+        loadComponent: () =>
+          import('./pages/traitementencours/traitementencours')
+            .then(m => m.Traitementencours)
+      }
+
     ]
     
     

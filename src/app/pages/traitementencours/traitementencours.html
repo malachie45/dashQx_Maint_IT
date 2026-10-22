@@ -1,0 +1,107 @@
+<div class="container mt-4">
+
+  <!-- En-tête -->
+  <div class="d-flex justify-content-between align-items-center mb-4 text-success">
+    <h4>
+      <i class="bi bi-tools"></i>
+      Traitements en cours
+    </h4>
+
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      (click)="chargerEquipementsEnCours()"
+      [disabled]="chargement">
+      <i class="bi bi-arrow-clockwise"></i>
+      Actualiser
+    </button>
+  </div>
+
+  <!-- Nombre d'équipements -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body d-flex align-items-center gap-3">
+      <i class="bi bi-pc-display-horizontal fs-1 text-success"></i>
+
+      <div>
+        <h6 class="text-muted mb-1">
+          Équipements en cours d'intervention
+        </h6>
+
+        <h3 class="mb-0">
+          {{ nombreEnCours }}
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chargement -->
+  <div *ngIf="chargement" class="text-center py-4">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">Chargement des équipements...</p>
+  </div>
+
+  <!-- Erreur -->
+  <div *ngIf="erreur && !chargement" class="alert alert-danger">
+    {{ erreur }}
+  </div>
+
+  <!-- Tableau -->
+  <div class="card shadow-sm" *ngIf="!chargement && !erreur">
+    <div class="card-header bg-success text-white">
+      <i class="bi bi-list-ul"></i>
+      Liste des équipements en cours
+    </div>
+
+    <div class="card-body">
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+
+          <thead class="table-light">
+            <tr>
+              <th>N°</th>
+              <th>Modèle</th>
+              <th>Code site</th>
+              <th>Numéro de série</th>
+              <th>Technicien en charge</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let equipement of equipementsEnCours; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ equipement.model || 'Non renseigné' }}</td>
+              <td>{{ equipement.cod_sit || 'Non renseigné' }}</td>
+              <td>{{ equipement.serial_num || 'Non renseigné' }}</td>
+              <td>
+                <span *ngIf="equipement.technicien; else sansTechnicien">
+                  <i class="bi bi-person-badge text-primary"></i>
+                  {{ equipement.technicien }}
+                </span>
+
+                <ng-template #sansTechnicien>
+                  <span class="text-danger">
+                    Non affecté
+                  </span>
+                </ng-template>
+              </td>
+            </tr>
+
+            <tr *ngIf="equipementsEnCours.length === 0">
+              <td colspan="5" class="text-center text-muted py-4">
+                Aucun équipement en cours d'intervention.
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+      <div class="text-muted small mt-2">
+        Total des équipements affichés : {{ equipementsEnCours.length }}
+      </div>
+
+    </div>
+  </div>
+
+</div>
